@@ -71,3 +71,12 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+sylius_cart:
+    resolver: app.cart_item_resolver # The id of our newly created service.
+    classes: ~ # This key can be empty but it must be present in the configuration.
+
+sylius_order:
+    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
+
+sylius_money: ~

@@ -12,7 +12,7 @@ class AppKernel extends Kernel
             new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
             new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
             new Sylius\Bundle\CartBundle\SyliusCartBundle(),
-            
+            //new Sylius\Bundle\TranslationBundle\SyliusTranslationBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
