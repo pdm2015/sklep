@@ -35,6 +35,13 @@ class Zakup
      */
     private $kiedy;
 
+  public function __construct()
+    {
+      
+        $this->kiedy = new \DateTime;
+        //...
+    }
+
 
     /**
      * Get id

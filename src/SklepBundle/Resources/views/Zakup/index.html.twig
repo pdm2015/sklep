@@ -1,7 +1,7 @@
 {% extends 'JordiLlonchCrudGeneratorBundle::layout.html.twig' %}
 
 {% block title %}
-{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Film'}, 'JordiLlonchCrudGeneratorBundle') }}
+{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Zakup'}, 'JordiLlonchCrudGeneratorBundle') }}
 {% endblock %}
 
 {% block page %}
@@ -9,7 +9,7 @@
 <div class="row">
 
     <div class="span8">
-        <h1>{{ 'views.index.list'|trans({'%entity%': 'Film'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
+        <h1>{{ 'views.index.list'|trans({'%entity%': 'Zakup'}, 'JordiLlonchCrudGeneratorBundle') }}</h1>
     </div>
     <div class="span2">
         {% if form_errors(filterForm) %}
@@ -31,12 +31,10 @@
     <div class="span12">
         <div id="filters" class="collapse">
 
-            <form class="well" action="{{ path('') }}" method="get" {{ form_enctype(filterForm) }}>
+            <form class="well" action="{{ path('zakup') }}" method="get" {{ form_enctype(filterForm) }}>
                 {{ form_row(filterForm.id) }}
-                {{ form_row(filterForm.tytul) }}
-                {{ form_row(filterForm.opis) }}
-                {{ form_row(filterForm.cena) }}
-                {{ form_row(filterForm.aktorzy) }}
+                {{ form_row(filterForm.filmId) }}
+                {{ form_row(filterForm.kiedy) }}
                 {{ form_rest(filterForm) }}
 
                 <p>
@@ -53,32 +51,24 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Tytul</th>
-            <th>Opis</th>
-            <th>Cena</th>
-            <th>Aktorzy</th>
+            <th>Filmid</th>
+            <th>Kiedy</th>
             <th>{{ 'views.index.actions'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.tytul }}</td>
-            <td>{{ entity.opis }}</td>
-            <td>{{ entity.cena }}</td>
-            <td>{{ entity.aktorzy }}</td>
+            <td><a href="{{ path('zakup_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.filmId }}</td>
+            <td>{% if entity.kiedy %}{{ entity.kiedy|date('Y-m-d H:i:s') }}{% endif %}</td>
             <td>
-        <a class="btn btn-mini" href="{{ path('_show', { 'id': entity.id }) }}">
+        <a class="btn btn-mini" href="{{ path('zakup_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-mini" href="{{ path('zakup_edit', { 'id': entity.id }) }}">
             {{ 'views.actions.edit'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
-        </a>           
-        <a class="btn btn-mini btn-success" href="{{ path('zakup_create', { 'id': entity.id }) }}">
-            Kup
-        </a>    
-         </td>
+        </a>            </td>
         </tr>
     {% endfor %}
     </tbody>
@@ -90,9 +80,7 @@
     </div>
 
         <div class="span8">
-    <a class="btn btn-primary likepaginator" href="{{ path('_new') }}">
-            {{ 'views.index.createnew'|trans({}, 'JordiLlonchCrudGeneratorBundle') }} Film
-        </a>
+
     </div>
     </div>
 
