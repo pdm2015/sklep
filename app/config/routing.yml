@@ -1,8 +1,5 @@
-app_app:
-    resource: "@AppAppBundle/Controller/"
+sklep:
+    resource: "@SklepBundle/Controller/"
     type:     annotation
     prefix:   /
 
-sylius_cart:
-    resource: @SyliusCartBundle/Resources/config/routing.yml
-    prefix: /cart

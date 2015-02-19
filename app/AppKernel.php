@@ -8,11 +8,6 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
-            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
-            new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
-            new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
-            new Sylius\Bundle\CartBundle\SyliusCartBundle(),
-            //new Sylius\Bundle\TranslationBundle\SyliusTranslationBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -21,9 +16,9 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new App\AppBundle\AppAppBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new SklepBundle\SklepBundle(),
+            new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+            new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -3,7 +3,3 @@
 parameters:
 #    parameter_name: value
 
-services:
-    app.cart_item_resolver:
-        class: App\AppBundle\Cart\ItemResolver
-        arguments: [doctrine.orm.entity_manager]

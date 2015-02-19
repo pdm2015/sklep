@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -24,6 +24,7 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+    translator: { fallback: pl }
 
 # Twig Configuration
 twig:
@@ -63,30 +64,8 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
-fos_rest:
-    view:
-        formats:
-            rss: true
-            xml: false
-        templating_formats:
-            html: true
-        force_redirects:
-            html: true
-        failed_validation: HTTP_BAD_REQUEST
-        default_engine: twig
-# Swiftmailer Configuration
-swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
 
-sylius_cart:
-    resolver: app.cart_item_resolver # The id of our newly created service.
-    classes: ~ # This key can be empty but it must be present in the configuration.
-
-sylius_order:
-    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
-
-sylius_money: ~
+twig:
+    form:
+        resources:
+            - LexikFormFilterBundle:Form:form_div_layout.html.twig
